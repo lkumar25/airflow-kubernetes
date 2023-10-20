@@ -1630,7 +1630,7 @@ externalDatabase:
 
   ## the key within `externalDatabase.passwordSecret` containing the password string
   ##
-  passwordSecretKey: "AT62KZRtz3xbQFdh"
+  passwordSecretKey: "postgresql-password"
 
   ## extra connection-string properties for the external database
   ##
