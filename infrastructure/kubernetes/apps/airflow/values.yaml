@@ -1610,7 +1610,7 @@ externalDatabase:
 
   ## the host of the external database
   ##
-  host: airflow-postgres.cwm7irwsuchl.us-east-2.rds.amazonaws.com
+  host: localhost
 
   ## the port of the external database
   ##
@@ -1618,15 +1618,15 @@ externalDatabase:
 
   ## the database/scheme to use within the external database
   ##
-  database: operational
+  database: airflow
 
   ## the user of the external database
   ##
-  user: campaign_ui
+  user: airflow
 
   ## the name of a pre-created secret containing the external database password
   ##
-  passwordSecret: "airflow-db-auth"
+  passwordSecret: ""
 
   ## the key within `externalDatabase.passwordSecret` containing the password string
   ##
