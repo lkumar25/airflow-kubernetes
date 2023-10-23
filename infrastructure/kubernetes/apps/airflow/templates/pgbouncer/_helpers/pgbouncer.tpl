@@ -16,7 +16,7 @@ default_pool_size =  {{ .Values.pgbouncer.poolSize }}
 ignore_startup_parameters = extra_float_digits
 
 listen_port = 6432
-listen_addr = 172.31.64.10
+listen_addr = *
 
 auth_type = md5
 auth_file = /home/pgbouncer/users.txt
