@@ -1386,18 +1386,6 @@ externalDatabase:
   passwordSecretKey: "postgresql-password"
 
   ## extra connection-string properties for the external database
-  ##
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
   ## ____ EXAMPLE _______________
   ##   # require SSL (only for Postgres)
   ##   properties: "?sslmode=require"
