@@ -1,9 +1,70 @@
-image:
-  repository: apache/airflow
-  tag: 2.1.2  # Specify the desired version
+airflow:
+  config: |-
+    [webserver]
+    web_server_host = 0.0.0.0
+    web_server_port = 8080
 
-web:
-  enabled: true  # To enable the Airflow web UI
+    [core]
+    executor = LocalExecutor
+    sql_alchemy_conn = sqlite:///home/airflow/airflow/airflow.db
 
-scheduler:
-  enabled: true  # To enable the Airflow scheduler
+    [scheduler]
+    job_heartbeat_sec = 5
+
+    [celery]
+    broker_url = redis://redis:6379/1
+    result_backend = db+sqlite:///home/airflow/airflow/airflow.db
+
+# PostgreSQL for metadata database
+postgresql:
+  enabled: false
+
+# Redis for Celery
+redis:
+  enabled: true
+
+# Ingress settings (expose Airflow UI to the internet)
+ingress:
+  enabled: true
+  host: airflow.example.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  pathType: Prefix
+
+# Persistence settings
+persistence:
+  enabled: true
+  existingClaim: ""
+
+# Node Affinity settings (if needed)
+nodeAffinity:
+  enabled: false
+  key: ""
+  values: []
+
+# Resources (CPU and memory)
+resources:
+  web:
+    requests:
+      cpu: 0.5
+      memory: 1Gi
+  scheduler:
+    requests:
+      cpu: 0.5
+      memory: 1Gi
+
+# RBAC (Role-Based Access Control)
+rbac:
+  create: true
+  namespaced: true
+
+# Airflow User password (change this!)
+secrets:
+  airflow:
+    fernetKey: "sboa"
+    secretKey: "sboc"
+    connectionPassword: "sbod"
+
+# LoadBalancer service (if using a cloud provider)
+service:
+  type: LoadBalancer
